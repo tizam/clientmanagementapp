@@ -124,7 +124,7 @@ app.get('/client/edit/:id', (req, res) => {
         activity: c.activity
       };
       res.render('clients/edit', {client: client});
-    });
+    }).catch((e) => console.log(e));
 });
 
 app.put('/client/:id', (req, res) => {
@@ -143,7 +143,9 @@ app.put('/client/:id', (req, res) => {
         req.flash('success_msg', 'Client Updated');
         res.redirect('/');
       });
-  }); 
+  }).catch((e) => {
+    console.log(e);
+  }) 
 });
 
 // delete client
@@ -153,7 +155,7 @@ app.delete('/client/:id', (req, res) => {
   }).then((result) => {
     req.flash('success_msg', 'Client Deleted');
     res.redirect('/');
-  });
+  }).then((e) => console.log(e));
 });
 
 const port = process.env.PORT || 3000
