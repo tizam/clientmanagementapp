@@ -1,0 +1,28 @@
+<div class="jumbotron mb-3">
+  <h1 class="display-4">Client Management App</h1>
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/about" role="button">Learn more</a>
+  </p>
+</div>
+
+<div class="row">
+  {{#each clients}}
+  <div class="col-sm mb-2">
+    <div class="card card-body">
+      <h5 class="card-title">{{name}}</h5>
+      <ul>
+        <li>{{address}}</li>
+        <li>{{email}}</li>
+        <li>{{phone}}</li>    
+        <li>{{activity}}</li>
+      </ul>
+      <a href="/client/edit/{{id}}" class="btn btn-dark btn-block mb-2">Edit</a>
+      <form action="/client/{{id}}?_method=DELETE" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn btn-danger btn-block">Delete</button>
+      </form>
+    </div>
+  </div>
+   {{/each}}
+</div>
