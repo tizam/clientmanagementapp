@@ -142,7 +142,7 @@ app.put('/client/:id', (req, res) => {
       .then((client) => {
         req.flash('success_msg', 'Client Updated');
         res.redirect('/');
-      });
+      }).catch((e) => console.log(e));
   }).catch((e) => {
     console.log(e);
   }) 
